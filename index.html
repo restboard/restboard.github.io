@@ -40,6 +40,33 @@ $ quasar dev</pre>
 			</div>
 		</div>
 	</div>
+	<!-- Hero unit -->
+	<div class="overview">
+		<div class="container">
+			<div class="hero__content">
+        <div class="hero__content__inner">
+          <h2 class="hero__title">Stack Overview</h2>
+          <p class="hero__text">Technically speaking, <strong>Restboard</strong> is a plug & play extension for <a href="https://quasar.dev">Quasar</a>, a rich and full-featured frontend framework based on <a href="https://vuejs.org/">Vue.js</a>:</p>
+          <img class="hero__img" src="images/stack.svg"/>
+          <h2 class="hero__title">How does it work?</h2>
+          <p class="hero__text">Restboard provides a couple of abstractions to interact with the underlying backend API in a standard way.</p>
+          <p class="hero__text">
+            The interaction pattern is designed around the concept of <strong>Resources</strong> and <strong>Providers</strong>:
+            <ul class="hero__text">
+              <li><strong>Resources</strong> basically map the backend resources and provide a standard CRUD API to interact with them.</li>
+              <li>Each resource uses a <strong>Data Provider</strong> to translate requests to the protocol and details of the backend API.</li>
+              <li>The <strong>Auth Provider</strong> provides an abstraction over authentication and authorization details.</li>
+            </ul>
+          </p>
+          <img class="hero__img" src="images/pattern.svg"/>
+          <h2 class="hero__title">The Ecosystem</h2>
+          <p class="hero__text">Restboard is composed by several packages. By default, the standard installation includes and wires all of them together.</p>
+          <p class="hero__text">However, if you want to use just resources and providers without the default UI kit, <strong>you can add to your project just the features that you need!</strong></p>
+          <img class="hero__img" src="images/ecosystem.svg"/>
+        </div>
+      </div>
+    </div>
+  </div>
 	<!-- Footer -->
 	<div class="footer footer--dark">
 		<div class="container">
