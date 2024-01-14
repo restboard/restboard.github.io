@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restboard {{ title }}</title>
+    <meta name="description" content="{{ description }}" />
+    <meta name="theme-color" content="#fff" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato"
+      rel="stylesheet"
+    />
+    <link href="/static/css/index.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="app" class="flex flex-col min-h-screen pt-16">
+      {% include 'navbar.njk' %}
+      {% block container %}
+      <div class="container max-w-2xl mx-auto py-20 prose-lg">
+        {% include 'page_title.njk' %}
+        {% set date=page.data.date %}
+        {% include 'date.njk' %}
+        {% block content %}
+        <div class="content">
+        {{ content | safe }}
+        </div>
+        {% endblock content %}
+      </div>
+      {% endblock container %}
+      {% include 'footer.njk' %}
+    </div>
+
+    {% block js %}
+    {% endblock %}
+  </body>
+</html>

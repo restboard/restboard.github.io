@@ -1,0 +1,38 @@
+{% extends 'page.njk' %}
+
+{% block container %}
+  <div class="hero py-12 min-h-screen bg-brand text-white">
+    <div class="container relative flex flex-col text-center max-w-2xl mx-auto prose-xl">
+      <h1>{{ splashTitle }}</h1>
+      <p>{{ splashText }}</p>
+      {% if splashLink %}
+      <p>
+        <a
+            href="{{ splashLink }}"
+            title="{{ splashAction }}"
+            class="btn"
+        >
+          {{ splashAction }}
+        </a>
+      </p>
+      {% endif %}
+      {% if splashImage %}
+      <p class="text-center">
+        <img class="inline-block w-full" src="{{ splashImage }}"/>
+      </p>
+      {% endif %}
+      {% if extra %}
+      {% include extra %}
+      {% endif %}
+    </div>
+  </div>
+
+  {{ super() }}
+{% endblock container %}
+
+{% block js %}
+{{ super() }}
+<!-- Netlify Identity Widget -->
+<!-- Needed only if you are using Netlify Identity feature -->
+<script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+{% endblock %}

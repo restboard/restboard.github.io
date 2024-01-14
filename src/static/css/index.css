@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Typography */
+
+html {
+  font-family: 'Lato', sans-serif;
+  scroll-behavior: smooth;
+}
+
+ul {
+  @apply list-disc;
+}
+
+ol {
+  @apply list-decimal;
+}
+
+a {
+  @apply inline-block font-bold text-brand
+}
+
+a:hover {
+  @apply underline underline-offset-8 decoration-dotted
+}
+
+.content {
+  @apply text-gray-500
+}
+
+/** Button */
+
+.btn {
+  @apply inline-block text-center px-8 py-2 border border-solid rounded-full border-white text-white
+}
+
+.btn:hover {
+  @apply bg-white text-brand
+}
+
+.btn-brand {
+  @apply border-brand text-brand
+}
+
+.btn-brand:hover {
+  @apply bg-brand text-white
+}
+
+/** Picture */
+
+.picture {
+  @apply block mx-auto w-full py-4 px-8
+}
+
+/** Hero */
+
+.hero {
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-image: url(/static/media/img/splash.jpg);
+  opacity: .03;
+  pointer-events: none;
+}
+
+.hero a {
+  @apply text-white
+}
