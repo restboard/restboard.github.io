@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restboard </title>
+    <meta name="description" content="" />
+    <meta name="theme-color" content="#fff" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato"
+      rel="stylesheet"
+    />
+    <link href="/static/css/index.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="app" class="flex flex-col min-h-screen pt-16">
+      <nav class="w-full py-2 px-2 md:px-6 h-16 bg-brand text-white fixed top-0 z-20 flex flex-wrap items-center">
+    <div class="container mx-auto max-w-4xl flex flex-nowrap items-center justify-between">
+        <div class="flex flex-row items-center">
+            <img class="inline-block h-12 mr-4" src="/static/media/img/logo.svg"/>
+            <span class="text-xl">Restboard</span>
+        </div>
+        <a href="https://github.com/restboard" title="View on GitHub">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="h-6 w-6 fill-slate-900"><path fill="#fff" fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.463 2 11.97c0 4.404 2.865 8.14 6.839 9.458.5.092.682-.216.682-.48 0-.236-.008-.864-.013-1.695-2.782.602-3.369-1.337-3.369-1.337-.454-1.151-1.11-1.458-1.11-1.458-.908-.618.069-.606.069-.606 1.003.07 1.531 1.027 1.531 1.027.892 1.524 2.341 1.084 2.91.828.092-.643.35-1.083.636-1.332-2.22-.251-4.555-1.107-4.555-4.927 0-1.088.39-1.979 1.029-2.675-.103-.252-.446-1.266.098-2.638 0 0 .84-.268 2.75 1.022A9.607 9.607 0 0 1 12 6.82c.85.004 1.705.114 2.504.336 1.909-1.29 2.747-1.022 2.747-1.022.546 1.372.202 2.386.1 2.638.64.696 1.028 1.587 1.028 2.675 0 3.83-2.339 4.673-4.566 4.92.359.307.678.915.678 1.846 0 1.332-.012 2.407-.012 2.734 0 .267.18.577.688.48 3.97-1.32 6.833-5.054 6.833-9.458C22 6.463 17.522 2 12 2Z"></path></svg>
+        </a>
+    </div>
+</nav>
+      
+  <div class="hero py-12 min-h-screen bg-brand text-white">
+    <div class="container relative flex flex-col text-center max-w-2xl mx-auto prose-xl">
+      <h1>An admin panel for any REST API</h1>
+      <p>Restboard is an MIT licensed application booster for (but not limited to) Vue. It allows you to quickly create modern and elegant frontend panels for any existing (REST) API, without limits on the backend technology.</p>
+      
+      <p>
+        <a
+            href="https://github.com/restboard"
+            title="View on GitHub"
+            class="btn"
+        >
+          View on GitHub
+        </a>
+      </p>
+      
+      
+      <p class="text-center">
+        <img class="inline-block w-full" src="/static/media/img/screenshot.png"/>
+      </p>
+      
+      
+      <h2 id="getting_started">Getting started</h2>
+<pre class="bg-gray-700 py-4 px-4 text-gray-200 rounded-lg text-left whitespace-pre">
+$ npm i -g @quasar/cli
+$ npm init quasar
+$ cd quasar-project
+$ quasar ext add restboard
+$ quasar dev
+</pre>
+      
+    </div>
+  </div>
+
+  
+      <div class="container max-w-2xl mx-auto py-20 prose-lg">
+        
+        
+        
+        
+        <div class="content">
+        <h2>Stack Overview</h2>
+<p>Technically speaking, <strong>Restboard</strong> is a plug &amp; play extension for <a href="'https://quasar.dev'">Quasar</a>, a rich and full-featured frontend framework based on <a href="'https://vuejs.or'">Vue.js</a>:</p>
+<img class="picture" src="/static/media/img/stack.svg"/>
+<p>Restboard provides the following buildig blocks:</p>
+<ul>
+<li>An <strong>abstraction layer</strong> over API interaction (based on CRUD model)</li>
+<li>A <strong>UI toolkit</strong> with ready-to-use visual components for common use-cases</li>
+</ul>
+<h2>How does it work?</h2>
+<p>Restboard provides a couple of abstractions to interact with the underlying backend API in a standard way. The interaction pattern is designed on the concepts of <strong>Resources</strong> and <strong>Providers</strong>:</p>
+<ul>
+<li><strong>Resources</strong> basically map the backend resources and provide a standard CRUD API to interact with them.</li>
+<li>Each resource uses a <strong>Data Provider</strong> to translate requests to the protocol and details of the backend API.</li>
+<li>The <strong>Auth Provider</strong> provides an abstraction over authentication and authorization details.</li>
+</ul>
+<img class="picture" src="/static/media/img/pattern.svg"/>
+<p class="text-center">
+    <a class="btn btn-brand" href="https://github.com/restboard/rb-core-module#rbresource">Learn more</a>
+</p>
+<h2>The Ecosystem</h2>
+<p>Restboard is composed by several packages. By default, the standard installation includes and wires all of them together. However, if you want to use just part of the ecosystem, <strong>you are free to add to your project just the features you need!</strong></p>
+<img class="picture" src="/static/media/img/ecosystem.svg"/>
+<p class="text-center">
+    <a class="btn btn-brand" href="https://github.com/restboard/quasar-app-extension-restboard#overviewe">Discover</a>
+</p>
+<h2>Does it work only with REST API?</h2>
+<p>No, not really. While Restboard is primarly designed to interact with REST APIs, it doesn't force you to any particular paradigm. In other words, if you need to integrate a GraphQL API you just need to use a proper <strong>data provider</strong>.</p>
+<p>You can also combine different APIs for different resources, simply using different data providers: <em>it's really up to you!</em></p>
+<p class="text-center">
+    <a class="btn btn-brand" href="#getting_started">Try it now!</a>
+</p>
+        </div>
+        
+      </div>
+      
+
+      <footer class="hero w-full flex-grow bg-gray-700 py-16 px-6 text-gray-200">
+    <div class="container mx-auto max-w-4xl py-6 flex flex-wrap md:flex-no-wrap justify-between items-center text-sm">
+        <div>
+            Created by <a href="https://zuck.github.io" target="_blank">Emanuele Bertoldi</a>
+        </div>
+        <div>
+            <a href="https://github.com/restboard" target="_blank">GitHub</a>
+        </div>
+    </div>
+</footer>
+    </div>
+
+    
+
+    
+<!-- Netlify Identity Widget -->
+<!-- Needed only if you are using Netlify Identity feature -->
+<script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+  </body>
+</html>
