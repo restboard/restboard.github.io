@@ -52,3 +52,9 @@ You can also combine different APIs for different resources, simply using differ
 <p class="text-center">
     <a class="btn btn-brand" href="#getting_started">Try it now!</a>
 </p>
+
+## Contribute
+
+If you want, you can freely donate to fund the project development:
+
+[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://paypal.me/EBertoldi)
