@@ -55,6 +55,8 @@ You can also combine different APIs for different resources, simply using differ
 
 ## Contribute
 
-If you want, you can freely donate to fund the project development:
+If you like the project, you can contribuite to its development with a donation:
 
-[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://paypal.me/EBertoldi)
+<p class="text-center">
+    <a class="btn btn-brand" href="https://paypal.me/EBertoldi">Donate</a>
+</p>
