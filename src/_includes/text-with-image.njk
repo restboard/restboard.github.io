@@ -1,0 +1,20 @@
+<h2>{{ title }}</h2>
+{% if reverse %}
+<div class="flex flex-col md:flex-row md:flex-row-reverse gap-4 sm:gap-8 md:gap-16 lg:gap-24 items-center justify-between">
+{% else %}
+<div class="flex flex-col md:flex-row gap-4 sm:gap-8 md:gap-16 lg:gap-24 items-center justify-between">
+{% endif %}
+    <div class="flex-1">
+        {{ content | safe }}
+        {% if actionLink and actionLabel %}
+        <p class="text-center">
+            <a class="btn btn-brand" href="{{ actionLink }}">{{ actionLabel }}</a>
+        </p>
+        {% endif %}
+    </div>
+    {% if image %}
+    <div class="flex-1">
+        <img class="w-full" alt="{{ imageDescription | default(title) }}" src="{{ image }}"/>
+    </div>
+    {% endif %}
+</div>

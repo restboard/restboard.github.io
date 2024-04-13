@@ -2,7 +2,7 @@
 
 {% block container %}
 <div class="hero w-full min-h-screen py-8 bg-brand text-white">
-  <div class="container relative box-border max-w-3xl mx-auto px-4 prose-xl xl:prose-2xl text-center">
+  <div class="container relative box-border max-w-5xl mx-auto px-4 prose-xl xl:prose-2xl text-center">
     <h1>{{ splashTitle }}</h1>
     <p>{{ splashText }}</p>
     {% if splashLink %}
@@ -26,6 +26,9 @@
   {% include extra %}
   {% endif %}
 </div>
+
+{% block beforeContent %}
+{% endblock %}
 
 {{ super() }}
 {% endblock container %}

@@ -1,0 +1,18 @@
+{% extends 'splash.njk' %}
+
+{% block beforeContent %}
+<div class="container box-border max-w-5xl mx-auto px-4 prose-lg">
+    {% for highlight in collections.highlight %}
+    <div class="content mb-24">
+        {% set title = highlight.data.title %}
+        {% set reverse = highlight.data.reverse %}
+        {% set image = highlight.data.image %}
+        {% set imageDescription = highlight.data.imageDescription %}
+        {% set actionLink = highlight.data.actionLink %}
+        {% set actionLabel = highlight.data.actionLabel %}
+        {% set content = highlight.content %}
+        {% include 'text-with-image.njk' %}
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
