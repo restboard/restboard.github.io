@@ -2,7 +2,7 @@
 tags: highlight
 title: 'Does it work only with REST API?'
 reverse: true
-actionLink: '#getting_started'
+actionLink: '/tutorial'
 actionLabel: 'Getting started'
 ---
 
