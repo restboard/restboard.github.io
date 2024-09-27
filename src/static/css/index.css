@@ -32,7 +32,7 @@ blockquote {
 }
 
 pre {
-  @apply bg-gray-700 py-4 px-4 text-gray-200 rounded-lg text-left
+  @apply bg-gray-700 py-4 px-4 text-gray-200 rounded-lg text-left w-full max-w-full overflow-auto
 }
 
 code {

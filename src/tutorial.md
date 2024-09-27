@@ -137,8 +137,8 @@ Restboard.
 
 > You can learn more about **Vue.js** following their interactive [official tutorial](https://vuejs.org/tutorial/#step-1)
 
-Let's first install the [Quasar CLI (Command-Line Interface)](https://quasar.dev/start/quick-start#optional-install-the-global-cli)
-using **npm**:
+Let's first install the [Quasar CLI](https://quasar.dev/start/quick-start#optional-install-the-global-cli)
+(Command-Line Interface) using **npm**:
 
 ```bash
 $ npm install --global @quasar/cli
