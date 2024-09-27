@@ -220,7 +220,7 @@ previous command:
 
 **Great!** Your first Quasar project is [up and running](http://localhost:9000)!
 
-## Restboard to te rescue
+## A Restboard touch
 
 While Quasar Framework offers ton of features used in a common Vue-based project,
 it doesn't provide a standard way to communicate with an external API. The
