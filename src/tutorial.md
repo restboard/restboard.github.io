@@ -5,7 +5,7 @@ layout: page.njk
 ## Welcome!
 
 Are you a **Powerbuilder engineer** and you absolutely don't know what all
-this craziness about Javascript framework is all about?
+this craziness about Javascript frameworks is all about?
 
 Are you a **C++ dev** and you want to experiment a hot-reload UI developing experience
 but you absolutely have no clue about what Node.js or Vue are?
@@ -16,7 +16,8 @@ on it.
 
 > **DISCLAIMER:** along the tutorial you'll find a lot of links to learn the
 basics to successfully bootstrap a modern web UI for your existing API (if you
-don't have one yet, no panic: we're going to use a reference API during this tutorial).
+don't have one yet, we're going to use a reference fake API during this
+tutorial).
 
 ## Get some REST
 
@@ -152,7 +153,7 @@ The `--global` flag will tell **npm** to install the CLI globally to your machin
 so you can utilize it for all your Quasar projects without the need to install it
 locally for every one of them.
 
-And now we can finally bootstrap our project:
+Now we can finally bootstrap our project:
 
 ```bash
 $ npm init quasar
@@ -163,20 +164,19 @@ answer a couple of questions and make decisions about which kind of components
 to include in your project:
 
 ```bash
- .d88888b.
-d88P" "Y88b
-888     888
-888     888 888  888  8888b.  .d8888b   8888b.  888d888
-888     888 888  888     "88b 88K          "88b 888P"
-888 Y8b 888 888  888 .d888888 "Y8888b. .d888888 888
-Y88b.Y8b88P Y88b 888 888  888      X88 888  888 888
- "Y888888"   "Y88888 "Y888888  88888P' "Y888888 888
-       Y8b
-
-? What would you like to build? › - Use arrow-keys. Return to submit.
-❯   App with Quasar CLI, let's go! - spa/pwa/ssr/bex/electron/capacitor/cordova
-    AppExtension (AE) for Quasar CLI
-    Quasar UI kit
+✔ What would you like to build? › App with Quasar CLI, let's go!
+✔ Project folder: … quasar-project
+✔ Pick Quasar version: › Quasar v2 (Vue 3 | latest and greatest)
+✔ Pick script type: › Javascript
+✔ Pick Quasar App CLI variant: › Quasar App CLI with Vite
+✔ Package name: … quasar-project
+✔ Project product name: (must start with letter if building mobile apps) … Quasar App
+✔ Project description: … A Quasar Project
+✔ Author: … Your Name <your@email.domain>
+✔ Pick your CSS preprocessor: › Sass with SCSS syntax
+✔ Check the features needed for your project: › ESLint, Vue-i18n
+✔ Pick an ESLint preset: › Prettier
+✔ Install project dependencies? (recommended) › Yes, use npm
 ```
 
 Let's confirm the defaults for this project and let the CLI to complete the
@@ -191,16 +191,30 @@ To get started:
 
 Documentation can be found at: https://v2.quasar.dev
 
-Quasar is relying on donations to evolve. We'd be very grateful if you can
-read our manifest on "Why donations are important": https://v2.quasar.dev/why-donate
-Donation campaign: https://donate.quasar.dev
-Any amount is very welcome.
-If invoices are required, please first contact Razvan Stoenescu.
-
-Please give us a star on Github if you appreciate our work:
-  https://github.com/quasarframework/quasar
+[...]
 
 Enjoy! - Quasar Team
+```
+
+If you open the folder `/quasar-project` in VSCode you should see the following
+project structure:
+
+```bash
+quasar-project
+- .quasar
+- .vscode
+- node_modules
+- public
+- src
+-- assets
+-- boot
+--- i18n.js
+-- components
+-- css
+-- i18n
+-- layouts
+-- pages
+-- router
 ```
 
 Now let's run our new Quasar project with:
@@ -219,6 +233,8 @@ previous command:
 ```
 
 **Great!** Your first Quasar project is [up and running](http://localhost:9000)!
+
+<img src="/static/media/img/quasar-default-ui.png" alt="Quasar default UI" class="mx-auto p-1 drop-shadow-xl" />
 
 ## A Restboard touch
 
@@ -251,7 +267,173 @@ a single command from the root folder of our project:
 $ quasar ext add restboard
 ```
 
-This will execute a new wizard which will install Restboard into an existing
-Quasar project after answering a couple of simple questions.
+A new wizard will guide you to install Restboard into your existing Quasar
+project. It will ask you to confirm the inclusion of example resources and
+providers, together with the replacement of the default Quasar theme.
+
+```bash
+? Include example resources and providers Yes
+? Overwrite "src/css/quasar.variables.scss"? Overwrite all
+? Overwrite "src/providers/auth.js"? Overwrite all
+```
+
+You're free to start clear, but for this tutorial let's answer positively to
+all questions.
+
+The installation process will add to the project some new files and folders:
+
+```bash
+quasar-project
+- src
+-- boot
+--- rb.js # This is the extension boot file: it is responsible to register all the Restboard new stuff
+-- config # This folder contains all configuration files
+-- mixins # This folder contains some reusable logic for components (e.g. form handling)
+-- providers # This folder contains all available data and auth providers
+-- resources # This folder contains all available resources
+```
+
+**Good!** Now let's start the development web server again and check what's changed
+at the UI level.
+
+<img src="/static/media/img/restboard-default-ui.png" alt="Restboard default UI" class="mx-auto p-1 drop-shadow-xl" />
+
+As you can see, the default Quasar reference screen has been replaced by a
+fully functional login form. You can successfully authenticating using random
+username and password and clicking to "Sign in".
+
+The reference, fake `auth` provider will mock the real call to an authentication
+backend allowing you to pass the gate and enter the application.
+
+<img src="/static/media/img/restboard-dashboard-ui.png" alt="Restboard dashboard UI" class="mx-auto p-1 drop-shadow-xl" />
+
+You can change this behavior simply removing the mock and defining the real
+authentication endpoint to be called by the auth provider inside `/providers/auth.js`.
+
+```js
+import createProvider from 'rb-auth-provider-simple'
+
+export default createProvider('http://localhost:3000/auth/login', {
+  ...
+})
+```
+
+If you click on the "Users" link in the side menu, you will be redirected to a
+fully working master / detail view of your application users:
+
+<img src="/static/media/img/screenshot.png" alt="Users view" class="mx-auto p-1 drop-shadow-xl" />
+
+At this point you may ask from where these users come from. The answer can be
+found looking first at `/providers/data.js`.
+
+```js
+import createProvider from 'rb-data-provider-json-server'
+
+export default createProvider('https://jsonplaceholder.typicode.com', {
+  ...
+})
+```
+
+As you can see the default data provider with chose to include in the project
+is already configured to interact with the [{JSON} Placeholder Fake API](https://jsonplaceholder.typicode.com/).
+
+If you now look at `/resources/users.js` you will find that specific resource
+is using that specific data provider to interact with the remote `/users` API
+resource.
+
+```js
+import { createResource } from "rb-core-module";
+...
+import { dataProvider } from "../providers";
+
+export default createResource({
+  name: "users",
+  provider: dataProvider,
+  ...
+});
+```
+
+## Adding resources
+
+Let's say you want to add a new resource to your application. Let's imagine we
+want to interact with the remote `/posts` API resource.
+
+Restboard provides its own CLI to quickly adding new resources to your project.
+Of course, you can also do it by hand, but using the CLI will be easier and quicker:
+
+```bash
+$ npx restboard create:resource posts
+Resource succesfully created at src/resources/posts.js
+Remember to include it to src/resources/index.js
+```
+
+> Please, note an abbreviated form is also available: `npx rb c:r <resource_name>`
+
+As you can see the CLI created a new `posts.js` resource under `/src/resources`
+but we need to register it into the `/src/resources/index.js` file:
+
+```js
+import users from './users'
+import posts from './posts'
+
+export default {
+  users,
+  posts
+}
+```
+
+If we go back to our UI, a new entry will appear in the sidebar and clicking on
+it will show already a list of fetched posts...*well, quite actually*.
+
+<img src="/static/media/img/posts-ui-before.png" alt="Posts view before configuration" class="mx-auto p-1 drop-shadow-xl" />
+
+Restboard uses a declarative way to define how remote API resources should be
+handled by the application, even how they should be rendered in the UI. The
+issue here is that we didn't provide a declaration of such rules yet.
+
+Let's fix it!
+
+Open the file `/src/resources/posts.js` and fill it with this code:
+
+```js
+import { createResource } from "rb-core-module";
+import { dataProvider } from "../providers";
+
+export default createResource({
+  name: "posts",
+  provider: dataProvider,
+  displayAttr: "title",
+  actions: {
+    delete: {
+      icon: "delete",
+      class: "text-negative",
+      isVisible(item) {
+        return !!this.getKey(item);
+      },
+      async run(item) {
+        this.deleteOne(this.getKey(item));
+      },
+    },
+  },
+  ui: {
+    icon: "description",
+    columns: [
+      {
+        name: "id",
+        sortable: true,
+      },
+      {
+        name: "title",
+        sortable: true,
+      },
+    ],
+  },
+});
+```
+
+Looking back the UI and you will see an icon has been added in the sidebar menu
+for the `Posts` entry and its page now looks more useful:
+
+<img src="/static/media/img/posts-ui-after.png" alt="Posts view after configuration" class="mx-auto p-1 drop-shadow-xl" />
 
 **Congratulations!**
