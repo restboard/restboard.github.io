@@ -453,8 +453,8 @@ how they interact each other in the following picture:
 The `quasar-app-extension-rb-ui` package extends Quasar with a set of
 resource-oriented reactive components. It exposes two kinds of components:
 
-- **Dumb components:** they are responsible to show something on the screen receiving data as props. They don't fetch any API directly.
-- **Smart components:** they are responsible to fetch or to send data from or to the API but they delegate rendering to a dumb component.
+- **Dumb (or presentational) components:** they are responsible to show something on the screen receiving data as props. They don't fetch any API directly.
+- **Smart (or container) components:** they are responsible to fetch or to send data from or to the API but they delegate rendering to a dumb component.
 
 Example of *dumb components* are [`RbDataTable`](https://github.com/restboard/quasar-app-extension-rb-ui/blob/main/docs/components/RbDataTable.md), [`RbSelect`](https://github.com/restboard/quasar-app-extension-rb-ui/blob/main/docs/components/RbSelect.md)
 and so on.
