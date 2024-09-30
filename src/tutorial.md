@@ -459,7 +459,7 @@ resource-oriented reactive components. It exposes two kinds of components:
 Example of *dumb components* are [`RbDataTable`](https://github.com/restboard/quasar-app-extension-rb-ui/blob/main/docs/components/RbDataTable.md), [`RbSelect`](https://github.com/restboard/quasar-app-extension-rb-ui/blob/main/docs/components/RbSelect.md)
 and so on.
 
-Example of *smart components* are [`RbDataCollection`](https://github.com/restboard/quasar-app-extension-rb-ui/blob/main/docs/components/RbDataCollection.md), [`RbDataInstance`](https://github.com/restboard/quasar-app-extension-rb-ui/blob/main/docs/components/RbDataInstance.md)
+Example of *smart components* are [`RbResourceCollection`](https://github.com/restboard/quasar-app-extension-rb-ui/blob/main/docs/components/RbResourceCollection.md), [`RbResourceInstance`](https://github.com/restboard/quasar-app-extension-rb-ui/blob/main/docs/components/RbResourceInstance.md)
 and so on.
 
 Together they form the UI building blocks for you application.
