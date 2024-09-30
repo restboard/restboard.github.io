@@ -436,4 +436,71 @@ for the `Posts` entry and its page now looks more useful:
 
 <img src="/static/media/img/posts-ui-after.png" alt="Posts view after configuration" class="mx-auto p-1 drop-shadow-xl" />
 
-**Congratulations!**
+As you can see the UI adapts itself based on the configuration declared by the
+resource. All the configuration attributes are documented [here](https://github.com/restboard/rb-core-module?tab=readme-ov-file#options).
+
+## Building blocks
+
+The Restboard ecosystem is composed by several layers: some of them are quite
+ubiquitous and can work both client and server side (e.g. `rb-core-module`),
+while others are very UI specific (e.g. `quasar-app-extension-rb-ui`).
+
+You can find an overview about the packages composing the Restboard ecosystem and
+how they interact each other in the following picture:
+
+<img src="/static/media/img/ecosystem.svg" alt="Restboard ecosystem" class="mx-auto p-1 drop-shadow-xl" />
+
+The `quasar-app-extension-rb-ui` package extends Quasar with a set of
+resource-oriented reactive components. It exposes two kinds of components:
+
+- **Dumb components:** they are responsible to show something on the screen receiving data as props. They don't fetch any API directly.
+- **Smart components:** they are responsible to fetch or to send data from or to the API but they delegate rendering to a dumb component.
+
+Example of *dumb components* are [`RbDataTable`](https://github.com/restboard/quasar-app-extension-rb-ui/blob/main/docs/components/RbDataTable.md), [`RbSelect`](https://github.com/restboard/quasar-app-extension-rb-ui/blob/main/docs/components/RbSelect.md)
+and so on.
+
+Example of *smart components* are [`RbDataCollection`](https://github.com/restboard/quasar-app-extension-rb-ui/blob/main/docs/components/RbDataCollection.md), [`RbDataInstance`](https://github.com/restboard/quasar-app-extension-rb-ui/blob/main/docs/components/RbDataInstance.md)
+and so on.
+
+Together they form the UI building blocks for you application.
+
+Let's take a deeper look to the posts table we added to the project. The template
+code for a simplified version of that page looks something like this:
+
+```js
+<template>
+  <q-page>
+    <rb-data-collection :resource="$rb.posts" v-props="props">
+      <rb-data-table :columns="$rb.posts.ui.columns" :rows="props.items"/>
+    </rb-data-collection>
+  </q-page>
+</template>
+
+<script>
+export default {
+  name: 'PostsPage'
+}
+</script>
+```
+
+In this code fragment it's very clear how smart and dumb component interact: the
+smart component receives the *resource* and interact with its API based on the
+resource declaration. When data has been fetched, it's passed down to the dumb
+component which is responsible for rendering it.
+
+This implies that you can switch resource, keeping all the rest the same,
+to simply transform a "Posts table" to a "Users table" or "Products table".
+At the same time, you can keep the same smart component but switching to a
+different representation of the data (e.g a grid instead of a table) changing
+the dumb component.
+
+## Final words
+
+**Congratulations!** You completed this introduction to Restboard. You can find
+more details in the reference page of each package:
+
+- [rb-core-module](https://github.com/restboard/rb-core-module/blob/master/README.md)
+- [rb-data-provider-json-server](https://github.com/restboard/rb-data-provider-json-server/blob/master/README.md)
+- [rb-auth-provider-simple](https://github.com/restboard/rb-auth-provider-simple/blob/master/README.md)
+- [quasar-app-extension-rb-ui](https://github.com/restboard/quasar-app-extension-rb-ui/blob/master/README.md)
+- [quasar-app-extension-restboard](https://github.com/restboard/quasar-app-extension-restboard/blob/master/README.md)
