@@ -391,7 +391,7 @@ Restboard uses a declarative way to define how remote API resources should be
 handled by the application, even how they should be rendered in the UI. The
 issue here is that we didn't provide a declaration of such rules yet.
 
-Let's fix it!
+**Let's fix it!**
 
 Open the file `/src/resources/posts.js` and fill it with this code:
 
@@ -438,6 +438,37 @@ for the `Posts` entry and its page now looks more useful:
 
 As you can see the UI adapts itself based on the configuration declared by the
 resource. All the configuration attributes are documented [here](https://github.com/restboard/rb-core-module?tab=readme-ov-file#options).
+
+## Having good relationships
+
+Let's say we now would like to fetch only posts created by a specific user.
+
+A first way to do it is just to pass a user filter when we request the posts list.
+If we're just using resources programmatically, we could type:
+
+```js
+// Using a JSON data provider will generate a request like:
+// GET /posts?userId=3
+const results = await this.$rb.posts.getMany({
+  userId: 3
+});
+```
+
+Another way, supported by Restboard, is to use relationships. Let's assume the
+REST API provides the following endpoint:
+
+```
+GET /users/:userId/posts
+```
+
+We can invoke it defining a relationship between `users` and `posts` resources:
+
+```js
+const userPosts = this.$rb.users.getRelation(3, this.$rb.posts);
+const results = await userPosts.getMany();
+```
+
+Both approaches are perfectly valid and supported, so it's really up to you!
 
 ## Building blocks
 
